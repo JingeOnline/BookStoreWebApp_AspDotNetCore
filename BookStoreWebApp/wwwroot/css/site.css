@@ -9,3 +9,20 @@ for details on configuring this project to bundle and minify static web assets. 
 .jumbotron{
     background:none;
 }
+
+html{
+    position: relative;
+    min-height:100%;
+}
+
+body{
+    margin-bottom:48px;
+}
+
+.footer{
+    position:absolute;
+    bottom:0;
+    line-height:48px;
+    width:100%;
+    white-space:nowrap;
+}

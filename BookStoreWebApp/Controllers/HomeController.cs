@@ -23,7 +23,12 @@ namespace BookStoreWebApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
         {
             return View();
         }
