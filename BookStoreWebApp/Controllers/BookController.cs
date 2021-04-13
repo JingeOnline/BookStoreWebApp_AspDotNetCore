@@ -16,10 +16,18 @@ namespace BookStoreWebApp.Controllers
             _bookRepository = new BookRepository();
         }
 
+        
         public IActionResult Books()
         {
             
             return View(_bookRepository.GetAllBooks());
+        }
+
+        //[HttpGet("{id}")] 这样写，表示根路径/id
+        [HttpGet("[controller]/{id}")]  //这样写的路径才是/book/{id}
+        public IActionResult BookDetail(int id)
+        {
+            return View(_bookRepository.GetBookById(id));
         }
     }
 }

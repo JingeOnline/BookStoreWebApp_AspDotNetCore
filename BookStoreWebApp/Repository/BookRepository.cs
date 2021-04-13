@@ -11,10 +11,11 @@ namespace BookStoreWebApp.Repository
         private List<BookModel> _booklist = new List<BookModel>()
         {
             new BookModel{Id=1,Title="JAVA",Author="Nitish" },
-            new BookModel{Id=1,Title="C#",Author="Boolin" },
-            new BookModel{Id=1,Title="Python",Author="Swanston" },
-            new BookModel{Id=1,Title="F#",Author="Jony" },
-            new BookModel{Id=1,Title="JavaScript",Author="Smith" },
+            new BookModel{Id=2,Title="C#",Author="Boolin" },
+            new BookModel{Id=3,Title="Python",Author="Swanston" },
+            new BookModel{Id=4,Title="F#",Author="Jony" },
+            new BookModel{Id=5,Title="JavaScript",Author="Smith" },
+            new BookModel{Id=6,Title="C++",Author="Tomsen" },
         };
 
         public List<BookModel> GetAllBooks()
