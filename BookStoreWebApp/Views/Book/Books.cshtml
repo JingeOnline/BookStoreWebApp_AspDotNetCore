@@ -1,0 +1,35 @@
+﻿@using BookStoreWebApp.Models
+@model IEnumerable<BookModel>
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <h3 class="display-4">All Books</h3>
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            //上面的Model是TModel类型，它对应的类型就是最顶上引用的哪个@model类型
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-img-top" width="100%" height="255">
+                        <img src="~/imgs/user-320X320.png" class="img mx-auto d-block" alt="image holder" />
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">@book.Title</h3>
+                        <p class="card-text">Photos following Prince Philip’s death prove Harry and Meghan have lost UK battle</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View details</a>
+                            </div>
+                            <small class="text-muted">@book.Author</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
