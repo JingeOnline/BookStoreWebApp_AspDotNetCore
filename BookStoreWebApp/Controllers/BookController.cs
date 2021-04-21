@@ -1,8 +1,10 @@
 ﻿using BookStoreWebApp.Models;
 using BookStoreWebApp.Repository;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,10 +13,12 @@ namespace BookStoreWebApp.Controllers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BookController()
+        public BookController(IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = new BookRepository();
+            _webHostEnvironment = webHostEnvironment;
         }
 
         
@@ -40,8 +44,20 @@ namespace BookStoreWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNewBook(BookModel book)
+        public async Task<IActionResult> AddNewBook(BookModel book)
         {
+            if (book.CoverImage != null)
+            {
+                string folder = "imgs/userUploadImages";
+                string serverRootPath = _webHostEnvironment.WebRootPath;
+                string fileName = Guid.NewGuid().ToString() +"_" + book.CoverImage.FileName;
+                string serverFolderPath = Path.Combine(serverRootPath, folder,fileName);
+
+                await book.CoverImage.CopyToAsync(new FileStream(serverFolderPath, FileMode.Create));
+                
+                //这是供前端使用的URL地址，在HTML中需要在图片地址前加上"/"
+                book.CoverImageUrl = "/"+Path.Combine(folder, fileName);
+            }
             int id=_bookRepository.CreateABook(book);
             if (id > 0)
             {

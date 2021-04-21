@@ -1,5 +1,5 @@
 ﻿@model BookModel
-@{ 
+@{
     ViewData["Title"] = "Add New Book";
 }
 <div class="container">
@@ -18,7 +18,7 @@
 
     @*默认会提交到当前action名称对应的post action中*@
     @*可以手动指定asp-controller和asp-action，提交到指定的controller和action中*@
-    <form method="post" asp-action="AddNewBook">
+    <form method="post" asp-action="AddNewBook" enctype="multipart/form-data">
         <div class="form-group">
             <label asp-for="Title"></label>
             <input asp-for="Title" class="form-control" />
@@ -47,6 +47,15 @@
                 <option value="">Please select a category</option>
             </select>
         </div>
+
+        <div class="form-group">
+            <label asp-for="CoverImage"></label>
+            <div class="custom-file">
+                <input asp-for="CoverImage" class="custom-file-input" id="customFile" />
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
+
         <div class="form-group">
             <input type="submit" value="Add book" class="btn btn-primary" />
         </div>

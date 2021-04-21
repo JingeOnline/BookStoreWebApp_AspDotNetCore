@@ -10,12 +10,12 @@ namespace BookStoreWebApp.Repository
     {
         private static List<BookModel> _booklist = new List<BookModel>()
         {
-            new BookModel{Id=1,Title="JAVA",Author="Nitish",Language="English",Category="Action" },
-            new BookModel{Id=2,Title="C#",Author="Boolin",Language="Chinese",Category="Romance" },
-            new BookModel{Id=3,Title="Python",Author="Swanston",Language="Chinese",Category="Adventure" },
-            new BookModel{Id=4,Title="F#",Author="Jony" ,Language="Chinese",Category="Adventure"},
-            new BookModel{Id=5,Title="JavaScript",Author="Smith",Language="Chinese" ,Category="Adventure"},
-            new BookModel{Id=6,Title="C++",Author="Tomsen",Language="Chinese",Category="Romance" },
+            new BookModel{Id=1,Title="JAVA",Author="Nitish",Language="English",Category="Action",CoverImageUrl="/imgs/user-320X320.png" },
+            new BookModel{Id=2,Title="C#",Author="Boolin",Language="Chinese",Category="Romance",CoverImageUrl="/imgs/user-320X320.png"},
+            new BookModel{Id=3,Title="Python",Author="Swanston",Language="Chinese",Category="Adventure" ,CoverImageUrl="/imgs/user-320X320.png"},
+            new BookModel{Id=4,Title="F#",Author="Jony" ,Language="Chinese",Category="Adventure",CoverImageUrl="/imgs/user-320X320.png"},
+            new BookModel{Id=5,Title="JavaScript",Author="Smith",Language="Chinese" ,Category="Adventure",CoverImageUrl="/imgs/user-320X320.png"},
+            new BookModel{Id=6,Title="C++",Author="Tomsen",Language="Chinese",Category="Romance" ,CoverImageUrl="/imgs/user-320X320.png"},
         };
 
         public List<BookModel> GetAllBooks()
