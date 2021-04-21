@@ -26,7 +26,10 @@
                             <a class="nav-link text-dark" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/book/books">Book</a>
+                            <a class="nav-link text-dark" href="/book/books">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Book" asp-action="AddNewBook">Add new book</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="/home/aboutus">About</a>
@@ -59,6 +62,8 @@
     <script src="~/js/site.js"></script>
     @*必须添加对jquery的引用，否则bootstrap汉堡菜单的按钮不起作用*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>

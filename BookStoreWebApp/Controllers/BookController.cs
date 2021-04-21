@@ -1,4 +1,5 @@
-﻿using BookStoreWebApp.Repository;
+﻿using BookStoreWebApp.Models;
+using BookStoreWebApp.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,28 @@ namespace BookStoreWebApp.Controllers
         public IActionResult BookDetail(int id)
         {
             return View(_bookRepository.GetBookById(id));
+        }
+
+        public IActionResult AddNewBook(bool isSuccess=false, int bookId=0)
+        {
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.Id = bookId;
+            ViewBag.Categories = new List<string> { "Action", "Romance", "Adventure", "History", "Family" };
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddNewBook(BookModel book)
+        {
+            int id=_bookRepository.CreateABook(book);
+            if (id > 0)
+            {
+                return RedirectToAction(nameof(AddNewBook), new { isSuccess = true,bookId=id });
+            }
+            return View();
+
+            //直接重定向到被创建的书记页面
+            //return RedirectToAction("BookDetail", new { id });
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿@model BookModel
+@{ 
+    ViewData["Title"] = "Add New Book";
+}
+<div class="container">
+    <h3 class="display-4">Add new book</h3>
+
+    <hr />
+    @if (ViewBag.IsSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations</strong> You have created a new book successfully.
+            <br />
+            Click <a asp-action="BookDetail" asp-route-id="@ViewBag.Id">here</a> to view the details.
+        </div>
+    }
+
+
+    @*默认会提交到当前action名称对应的post action中*@
+    @*可以手动指定asp-controller和asp-action，提交到指定的controller和action中*@
+    <form method="post" asp-action="AddNewBook">
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Author"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Language"></label>
+            @*<input asp-for="Language" class="form-control" />*@
+            <select asp-for="Language" class="form-control" required>
+                <option value="">Please select a language</option>
+                <option>English</option>
+                <option>Chinese</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>Japanese</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Category"></label>
+            <select asp-for="Category" class="form-control" asp-items="new SelectList(ViewBag.Categories)" required>
+                <option value="">Please select a category</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add book" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

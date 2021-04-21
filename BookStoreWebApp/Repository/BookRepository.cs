@@ -8,14 +8,14 @@ namespace BookStoreWebApp.Repository
 {
     public class BookRepository
     {
-        private List<BookModel> _booklist = new List<BookModel>()
+        private static List<BookModel> _booklist = new List<BookModel>()
         {
-            new BookModel{Id=1,Title="JAVA",Author="Nitish" },
-            new BookModel{Id=2,Title="C#",Author="Boolin" },
-            new BookModel{Id=3,Title="Python",Author="Swanston" },
-            new BookModel{Id=4,Title="F#",Author="Jony" },
-            new BookModel{Id=5,Title="JavaScript",Author="Smith" },
-            new BookModel{Id=6,Title="C++",Author="Tomsen" },
+            new BookModel{Id=1,Title="JAVA",Author="Nitish",Language="English",Category="Action" },
+            new BookModel{Id=2,Title="C#",Author="Boolin",Language="Chinese",Category="Romance" },
+            new BookModel{Id=3,Title="Python",Author="Swanston",Language="Chinese",Category="Adventure" },
+            new BookModel{Id=4,Title="F#",Author="Jony" ,Language="Chinese",Category="Adventure"},
+            new BookModel{Id=5,Title="JavaScript",Author="Smith",Language="Chinese" ,Category="Adventure"},
+            new BookModel{Id=6,Title="C++",Author="Tomsen",Language="Chinese",Category="Romance" },
         };
 
         public List<BookModel> GetAllBooks()
@@ -33,6 +33,16 @@ namespace BookStoreWebApp.Repository
         {
             List<BookModel> books = _booklist.Where(x => x.Title.Contains(title)).ToList();
             return books;
+        }
+
+        public int CreateABook(BookModel book)
+        {
+            if (book.Id == 0)
+            {
+                book.Id = _booklist.Max(x => x.Id) + 1;
+            }
+            _booklist.Add(book);
+            return book.Id;
         }
     }
 }
