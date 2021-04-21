@@ -18,46 +18,55 @@
 
     @*默认会提交到当前action名称对应的post action中*@
     @*可以手动指定asp-controller和asp-action，提交到指定的controller和action中*@
-    <form method="post" asp-action="AddNewBook" enctype="multipart/form-data">
-        <div class="form-group">
-            <label asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Author"></label>
-            <input asp-for="Author" class="form-control" />
-            <span asp-validation-for="Author" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Language"></label>
-            @*<input asp-for="Language" class="form-control" />*@
-            <select asp-for="Language" class="form-control" required>
-                <option value="">Please select a language</option>
-                <option>English</option>
-                <option>Chinese</option>
-                <option>Spanish</option>
-                <option>French</option>
-                <option>Japanese</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label asp-for="Category"></label>
-            <select asp-for="Category" class="form-control" asp-items="new SelectList(ViewBag.Categories)" required>
-                <option value="">Please select a category</option>
-            </select>
-        </div>
+<form method="post" asp-action="AddNewBook" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author"></label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Language"></label>
+        @*<input asp-for="Language" class="form-control" />*@
+        <select asp-for="Language" class="form-control" required>
+            <option value="">Please select a language</option>
+            <option>English</option>
+            <option>Chinese</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Japanese</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category"></label>
+        <select asp-for="Category" class="form-control" asp-items="new SelectList(ViewBag.Categories)" required>
+            <option value="">Please select a category</option>
+        </select>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="CoverImage"></label>
-            <div class="custom-file">
-                <input asp-for="CoverImage" class="custom-file-input" id="customFile" />
-                <label class="custom-file-label" for="customFile">Choose file</label>
-            </div>
+    <div class="form-group">
+        <label asp-for="CoverImage"></label>
+        <div class="custom-file">
+            <input asp-for="CoverImage" class="custom-file-input" id="customFile" />
+            <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
+    </div>
 
-        <div class="form-group">
-            <input type="submit" value="Add book" class="btn btn-primary" />
+
+    <div class="form-group">
+        <label asp-for="BookPdf"></label>
+        <div class="custom-file">
+            <input asp-for="BookPdf" class="custom-file-input" id="customFile" />
+            <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
-    </form>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Add book" class="btn btn-primary" />
+    </div>
+</form>
 </div>

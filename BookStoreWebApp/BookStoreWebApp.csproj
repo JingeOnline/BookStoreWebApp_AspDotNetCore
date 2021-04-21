@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\imgs\userUploadImages\" />
+    <Folder Include="wwwroot\pdfs\" />
   </ItemGroup>
 
 </Project>

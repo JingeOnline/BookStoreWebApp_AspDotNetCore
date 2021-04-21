@@ -59,9 +59,12 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-outline-primary">
+                    @*target="_blank"表示从新标签页打开*@
+                    @*还可以使用bootstrap把pdf文件嵌入到当前页面中显示，见下面的教程视频*@
+                    @*https://www.youtube.com/watch?v=aUdnaAsq1ec&list=PLaFzfwmPR7_LTXu0Vz9Zz_Y0OMMC7ArHZ&index=71*@
+                    <a class="btn btn-outline-primary" href="@Model.BookPdfUrl" target="_blank">
                         Read now
-                    </button>
+                    </a>
                 </div>
             </div>
 

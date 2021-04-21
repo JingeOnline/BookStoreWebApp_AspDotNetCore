@@ -58,6 +58,16 @@ namespace BookStoreWebApp.Controllers
                 //这是供前端使用的URL地址，在HTML中需要在图片地址前加上"/"
                 book.CoverImageUrl = "/"+Path.Combine(folder, fileName);
             }
+            if (book.BookPdf != null)
+            {
+                string folder = "pdfs";
+                string serverRootPath = _webHostEnvironment.WebRootPath;
+                string fileName = Guid.NewGuid().ToString() + "_" + book.BookPdf.FileName;
+                string serverFolderPath = Path.Combine(serverRootPath, folder, fileName);
+
+                await book.BookPdf.CopyToAsync(new FileStream(serverFolderPath, FileMode.Create));
+                book.BookPdfUrl = "/" + Path.Combine(folder, fileName);
+            }
             int id=_bookRepository.CreateABook(book);
             if (id > 0)
             {

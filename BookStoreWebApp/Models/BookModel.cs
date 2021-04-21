@@ -22,7 +22,10 @@ namespace BookStoreWebApp.Models
 
         [Display(Name ="Upload the cover image for your book")]
         public IFormFile CoverImage { get; set; }
-
         public string CoverImageUrl { get; set; }
+
+        [Display(Name ="Upload your book in PDF format")]
+        public IFormFile BookPdf { get; set; }
+        public string BookPdfUrl { get; set; }
     }
 }
