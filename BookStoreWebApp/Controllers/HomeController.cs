@@ -1,4 +1,5 @@
 ﻿using BookStoreWebApp.Models;
+using BookStoreWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,14 +13,21 @@ namespace BookStoreWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUserService _userService;
+        private readonly IEmailService _emailService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IUserService userService, IEmailService emailService)
         {
             _logger = logger;
+            _userService = userService;
+            _emailService = emailService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            //await _emailService.SendTestEmail();
+
+            //string id = _userService.GetUserId();
             return View();
         }
 

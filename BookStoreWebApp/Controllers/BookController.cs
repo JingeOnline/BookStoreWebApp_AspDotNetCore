@@ -1,5 +1,6 @@
 ﻿using BookStoreWebApp.Models;
 using BookStoreWebApp.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,6 +36,7 @@ namespace BookStoreWebApp.Controllers
             return View(_bookRepository.GetBookById(id));
         }
 
+        [Authorize]
         public IActionResult AddNewBook(bool isSuccess=false, int bookId=0)
         {
             ViewBag.IsSuccess = isSuccess;
@@ -43,6 +45,7 @@ namespace BookStoreWebApp.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel book)
         {
